@@ -6,5 +6,9 @@ will select if the data should be filtered by mass - and consequently set the up
 
 Author: Steven Sousa
 version: 1.2
-release date - November 2023
+release date - December 2023
 """
+
+import welcome_message
+
+welcome_message
