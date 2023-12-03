@@ -8,14 +8,24 @@ release date - December 2023
 
 
 def get_file_name():
-    file_name = input('Enter a valid file name (ex. "file_name.txt") with its file extension (if applicable) or\n'
-                      'To EXIT in Windows, type ">q" or ">Q". In macOS, type ":Q" or ":q": ')
+    while True:
+        filename = input('\nEnter a file name with its extension (ex: "file_name.txt") or\n'
+                         'To EXIT in Windows, type ">q" or ">Q". In macOS, type ":Q" or ":q": ').lower()
 
-    print("\nTarget file: ", file_name)
+        if filename_is_valid(filename):
+            print("\nTarget file: ", filename)
+            return filename
+        else:
+            print("Invalid filename. Please type a valid file name.")
 
-    if file_name.lower() in ['>q', ':q']:
+
+def filename_is_valid(filename):
+    if filename.endswith(".txt"):
+        return True
+    elif filename in ['>q', ':q']:
         exit('\nProgram is now exiting. Goodbye!')
-    return file_name
+    else:
+        return False
 
 
 def get_file_open_mode():
@@ -24,12 +34,11 @@ def get_file_open_mode():
                       '"w" - open for writing, truncating the file first\n'
                       '"x" - open for exclusive creation, failing if the file already exists\n'
                       '"a" - open for writing, appending to the end of file if it exists\n'
-                      'To EXIT in Windows, type ">q" or ">Q". In macOS, type ":Q" or ":q": ')
+                      'To EXIT in Windows, type ">q" or ">Q". In macOS, type ":Q" or ":q": ').lower()
 
-    print('\nSelected read mode: ', open_mode)
+    print('\nSelected open mode: ', open_mode)
 
-    if open_mode.lower() in ['>q', ':q']:
-        exit('\nProgram is now exiting. Goodbye!')
+    if open_mode in ['>q', ':q']: exit('\nProgram is now exiting. Goodbye!')
     return open_mode
 
 
