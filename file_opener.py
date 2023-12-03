@@ -6,6 +6,7 @@ version: 1.2
 release date - December 2023
 """
 
+
 def get_file_name():
     while True:
         filename = input('\nEnter a file name with its extension (ex: "file_name.txt") or\n'
@@ -13,9 +14,10 @@ def get_file_name():
 
         if check_if_filename_is_valid(filename):
             print("\nTarget file: ", filename)
-            return filename
+            break
         else:
             print("Invalid filename. Please type a valid file name.")
+    return filename
 
 
 def check_if_filename_is_valid(filename):
