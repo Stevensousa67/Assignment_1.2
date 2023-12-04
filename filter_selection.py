@@ -5,6 +5,16 @@ Author: Steven Sousa
 version: 1.2
 release date - December 2023
 """
+import data_filter
+
+
+def receive_filename_and_open_mode():
+    """This function calls file_opener.py module in order to receive the filename and open mode provided from user input
+    in order to send them to data_filter.py later on in this module."""
+    import file_opener
+    file = file_opener.get_file_name()
+    mode = file_opener.get_file_open_mode()
+    return file, mode
 
 
 def select_filter():
@@ -17,12 +27,7 @@ def select_filter():
                        '\'3\' - EXIT the program\n')
 
         if check_if_filter_choice_is_valid(choice):
-            if choice == '1':
-                select_mass()
-                break
-            elif choice == '2':
-                select_year()
-                break
+            return choice
         else:
             print('\nPlease select a valid option.')
 
@@ -54,7 +59,7 @@ def select_mass():
         mass_lower_limit = 1
 
     print('\nSelected mass range (g): ', mass_lower_limit, ' - ', mass_upper_limit)
-    # data_filter.filter_mass(file_name, read_mode, int(mass_lower_limit), int(mass_upper_limit))
+    return mass_lower_limit, mass_upper_limit
 
 
 def select_year():
@@ -78,7 +83,7 @@ def select_year():
         year_lower_limit = 1
 
     print('\nSelected year range: ', year_lower_limit, ' - ', year_upper_limit)
-    # data_filter.filter_year(file_name, read_mode, year_lower_limit, year_upper_limit)
+    return year_lower_limit, year_upper_limit
 
 
 def get_valid_int_input(prompt):
@@ -104,14 +109,14 @@ def swap_values_between_bounds(lower_limit, upper_limit):
     return lower_limit, upper_limit
 
 
-def receive_filename_and_open_mode():
-    """This function calls file_opener.py module in order to receive the filename and open mode provided from user input
-    in order to send them to data_filter.py later on in this module."""
-    import file_opener
-    file = file_opener.get_file_name()
-    mode = file_opener.get_file_open_mode()
-    return file, mode
-
-
 file_name, open_mode = receive_filename_and_open_mode()
-select_filter()
+filter_choice = select_filter()
+
+if filter_choice == 1:
+    mass_lower_limit, mass_upper_limit = select_mass()
+    data_filter.filter_mass(file_name, open_mode, mass_lower_limit, mass_upper_limit)
+elif filter_choice == 2:
+    year_lower_limit, year_upper_limit = select_year()
+    data_filter.filter_year(file_name, open_mode, year_lower_limit, year_upper_limit)
+else:
+    exit("\nPlease type a valid integer.")
