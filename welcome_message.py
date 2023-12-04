@@ -18,11 +18,11 @@ def print_welcome_message():
           'or to an .xlsm file.')
 
 
-def run_file_opener():
+def run_filter_selection():
     """This function will call the run_file_opener.py module in order to continue the program's operational sequence"""
-    import file_opener
-    file_opener.get_file_name()
+    import filter_selection
+    filter_selection
 
 
 print_welcome_message()
-run_file_opener()
+run_filter_selection()

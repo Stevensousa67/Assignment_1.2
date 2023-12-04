@@ -60,15 +60,3 @@ def check_if_open_mode_is_valid(mode):
         exit('\nProgram is now exiting. Goodbye!')
     else:
         return False
-
-
-def run_filter_selection():
-    """This function will call the run_filter_selection.py module once filename and open mode have been provided and
-    verified as valid inputs."""
-    import filter_selection
-    filter_selection.select_filter()
-
-
-file_name = get_file_name()
-open_mode = get_file_open_mode()
-run_filter_selection()
