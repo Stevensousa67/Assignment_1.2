@@ -8,6 +8,9 @@ release date - December 2023
 
 
 def print_welcome_message():
+    """This function will greet the user when the program initiates and explain what the program does and what is
+     expected from the user."""
+
     print('\nAuthor: Steven Sousa / Version: 1.2 / Release Date: December 2023\n\n'
           'Welcome to the meteor filtering program! This program opens a .txt file from NASA to filter the data by '
           'choosing either the mass of the meteorite or the year it fell on Earth.\nAfter filtering, the program will'
@@ -16,6 +19,7 @@ def print_welcome_message():
 
 
 def run_file_opener():
+    """This function will call the run_file_opener.py module in order to continue the program's operational sequence"""
     import file_opener
     file_opener.get_file_name()
 
