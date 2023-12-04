@@ -1,3 +1,12 @@
+"""
+This module will ask the user to select which filter mode they'd like to use on the text file they provided.
+
+Author: Steven Sousa
+version: 1.2
+release date - December 2023
+"""
+
+
 def select_filter():
     """This function will prompt the user to choose a filter to be used on the file provided in file_opener.py module
     or to quit the program."""

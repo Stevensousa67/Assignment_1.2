@@ -1,5 +1,6 @@
 """
-This module will open the meteorite_landings_data.txt file and ask the user to select which read mode they'd like.
+This module will open the text file provided by the user and ask the user to select which read mode they'd like. Finally,
+it will call filter_selection.py module to continue the flow of operation.
 
 Author: Steven Sousa
 version: 1.2
