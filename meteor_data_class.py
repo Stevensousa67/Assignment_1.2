@@ -12,17 +12,22 @@ release date - December 2023
 class MeteorDataEntry:
     """ MeteorDataEntry class receives many parameters that will construct the meteor object"""
 
-    def __init__(self, name, id, nametype, recclass, mass, fall, year, reclat='', reclong='', geolocation='', states='',
-                 counties=''):
-        self.name = name
-        self.id = id
-        self.nametype = nametype
-        self.recclass = recclass
-        self.mass = mass
-        self.fall = fall
-        self.year = year
-        self.reclat = reclat
-        self.reclong = reclong
-        self.geolocation = geolocation
-        self.states = states
-        self.counties = counties
+    def __init__(self, data):
+        self.name = data[0] if data[0] else ""
+        self.id = data[1] if data[1] else ""
+        self.nametype = data[2] if data[2] else ""
+        self.recclass = data[3] if data[3] else ""
+        self.mass = data[4] if data[4] else ""
+        self.fall = data[5] if data[5] else ""
+        self.year = data[6] if data[6] else ""
+        self.reclat = data[7] if data[7] else ""
+        self.reclong = data[8] if data[8] else ""
+        self.geolocation = data[9] if data[9] else ""
+        self.states = data[10] if data[10] else ""
+        self.counties = data[11] if data[11] else ""
+
+
+def __str__(self):
+    """This function makes it possible to print the meteorite objects"""
+    return (f'{self.name}\t{self.id}\t{self.nametype}\t{self.recclass}\t{self.mass}\t{self.fall}\t{self.year}\t'
+            f'{self.reclat}\t{self.reclong}\t{self.geolocation}\t{self.states}\t{self.counties}')
