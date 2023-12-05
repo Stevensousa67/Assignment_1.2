@@ -1,5 +1,5 @@
 """
-This class definition creates and returns an object called MeteorDataEntry to data_filter.py.
+This class definition creates and returns an object called Meteorite that data_filter.py sends.
 
 Author: Steven Sousa
 version: 1.2
@@ -7,11 +7,8 @@ release date - December 2023
 """
 
 
-# This file contains the constructor for each meteor that has mass > 29000000g and fell on or after 2013 from main.py
-
 class Meteorite:
     """ MeteorDataEntry class receives many parameters that will construct the meteor object"""
-
     def __init__(self, data):
         self.name = data[0] if data and len(data) > 0 else ""
         self.id = data[1] if data and len(data) > 1 else ""
@@ -25,9 +22,3 @@ class Meteorite:
         self.geolocation = data[9] if data and len(data) > 9 else ""
         self.states = data[10] if data and len(data) > 10 else ""
         self.counties = data[11] if data and len(data) > 11 else ""
-
-
-def __str__(self):
-    """This function makes it possible to print the meteorite objects"""
-    return (f'{self.name}\t{self.id}\t{self.nametype}\t{self.recclass}\t{self.mass}\t{self.fall}\t{self.year}\t'
-            f'{self.reclat}\t{self.reclong}\t{self.geolocation}\t{self.states}\t{self.counties}')

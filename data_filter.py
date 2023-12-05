@@ -21,11 +21,10 @@ def filter_mass(file, read_mode, mass_lower_limit, mass_upper_limit):
 
 
 def filter_year(file, read_mode, year_lower_limit, year_upper_limit):
-    file, filtered_years = open(file, read_mode).readline(), []
-    for x in file:
-        row = x.strip().split('\t')
+    text_file, filtered_year = open(file, read_mode), []
+    next(text_file)
+    for line in text_file:
+        row = line.strip().split('\t')
         meteorite = Meteorite(row)
-        if row[6] != '' and year_lower_limit <= int(row[6]) <= year_upper_limit: filtered_years.append(meteorite)
-
-
-print()
+        if row[6] != '' and year_lower_limit <= int(row[6]) <= year_upper_limit: filtered_year.append(meteorite)
+    display_table.print_filtered_list(filtered_year)

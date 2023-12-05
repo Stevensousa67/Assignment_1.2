@@ -24,10 +24,9 @@ counties_label = 'COUNTIES'
 def print_filtered_list(filtered_list):
     """This function will print the filtered data in the terminal"""
     print('\nTable of filtered meteors:\n')
-    print(
-        f'{blank_label: <8}{name_label: <24}{id_label: <24}{nametype_label: <24}{recclass_label: <24}{mass_label: <24}'
-        f'{fall_label: <24}{year_label: <24}{reclat_label: <24}{reclong_label: <24}{geolocation_label: <30}'
-        f'{states_label: <24}{counties_label: <24}')
+    print(f'{blank_label: <8}{name_label: <24}{id_label: <24}{nametype_label: <24}{recclass_label: <24}'
+          f'{mass_label: <24}{fall_label: <24}{year_label: <24}{reclat_label: <24}{reclong_label: <24}'
+          f'{geolocation_label: <30}{states_label: <24}{counties_label: <24}')
     print("=" * 288)
     for x, meteorite in enumerate(filtered_list, 1):
         print(f'{x: < 8}{meteorite.name: <24}{meteorite.id: <24}{meteorite.nametype: <24}{meteorite.recclass: <24}'
