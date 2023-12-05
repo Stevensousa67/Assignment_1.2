@@ -8,22 +8,36 @@ release date - December 2023
 
 blank_label = ''
 name_label = 'NAME'
-mass_label = "MASS (g)"
-year_label = "YEAR"
+id_label = 'ID'
+nametype_label = 'NAMETYPE'
+recclass_label = 'RECCLASS'
+mass_label = 'MASS (g)'
+fall_label = 'FALL'
+year_label = 'YEAR'
+reclat_label = 'RECLAT'
+reclong_label = 'RECLONG'
+geolocation_label = 'GEOLOCATION'
+states_label = 'STATES'
+counties_label = 'COUNTIES'
 
 
-def print_filtered_mass_list(filtered_mass):
+def print_filtered_mass_list(filtered_list):
+    """This function will print the filtered data in the terminal"""
     print('\nTable of meteors filtered on mass(g):\n')
-    print(f'{blank_label: <8}{name_label: <24}{mass_label: <24}')
+    print(
+        f'{blank_label: <8}{name_label: <24}{id_label: <24}{nametype_label: <24}{recclass_label: <24}{mass_label: <24}'
+        f'{fall_label: <24}{year_label: <24}{reclat_label: <24}{reclong_label: <24}{geolocation_label: <24}'
+        f'{states_label: <24}{counties_label: <24}')
     print("=" * 60)
-    for x, meteorite in enumerate(filtered_mass, 1):
-        print(f'{x: < 8}{meteorite.name: <24}{meteorite.mass: <24}')
+    for x, meteorite in enumerate(filtered_list, 1):
+        print(f'{x: < 8}{meteorite.name: <24}{meteorite.id: <24}{meteorite.nametype: <24}{meteorite.recclass: <24}'
+              f'{meteorite.mass: <24}{meteorite.fall: <24}{meteorite.year: >24}{meteorite.reclat: <24}'
+              f'{meteorite.reclong: <24}{meteorite.geolocation: <24}{meteorite.states: <24}{meteorite.counties: <24}')
 
-
-def print_filtered_year_list(filtered_year):
-    print()
-    print('\nTable of meteors filtered on year:\n')
-    print(f'{blank_label: <8}{name_label: <24}{year_label: <24}')
-    print("=" * 60)
-    for x, meteorite in enumerate(filtered_year, 1):
-        print(f'{x: < 8}{meteorite.name: <24}{meteorite.year: <24}')
+# def print_filtered_year_list(filtered_year):
+#     print()
+#     print('\nTable of meteors filtered on year:\n')
+#     print(f'{blank_label: <8}{name_label: <24}{year_label: <24}')
+#     print("=" * 60)
+#     for x, meteorite in enumerate(filtered_year, 1):
+#         print(f'{x: < 8}{meteorite.name: <24}{meteorite.year: <24}')

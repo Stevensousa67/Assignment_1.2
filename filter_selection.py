@@ -8,7 +8,7 @@ release date - December 2023
 import data_filter
 
 
-def receive_filename_and_open_mode():
+def get_filename_and_open_mode():
     """This function calls file_opener.py module in order to receive the filename and open mode provided from user input
     in order to send them to data_filter.py later on in this module."""
     import file_opener
@@ -109,14 +109,12 @@ def swap_values_between_bounds(lower_limit, upper_limit):
     return lower_limit, upper_limit
 
 
-file_name, open_mode = receive_filename_and_open_mode()
+file_name, open_mode = get_filename_and_open_mode()
 filter_choice = select_filter()
 
-if filter_choice == 1:
-    mass_lower_limit, mass_upper_limit = select_mass()
-    data_filter.filter_mass(file_name, open_mode, mass_lower_limit, mass_upper_limit)
-elif filter_choice == 2:
-    year_lower_limit, year_upper_limit = select_year()
-    data_filter.filter_year(file_name, open_mode, year_lower_limit, year_upper_limit)
-else:
-    exit("\nPlease type a valid integer.")
+if filter_choice == '1':
+    mass_lower_bound, mass_upper_bound = select_mass()
+    data_filter.filter_mass(file_name, open_mode, mass_lower_bound, mass_upper_bound)
+elif filter_choice == '2':
+    year_lower_bound, year_upper_bound = select_year()
+    data_filter.filter_year(file_name, open_mode, year_lower_bound, year_upper_bound)

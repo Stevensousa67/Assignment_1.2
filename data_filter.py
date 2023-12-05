@@ -7,33 +7,25 @@ version 1.2
 release date - December 2023
 """
 
-import display_table
 from meteor_data_class import MeteorDataEntry
 
 
 def filter_mass(file, read_mode, mass_lower_limit, mass_upper_limit):
-    file = open(file, read_mode).readline()
-    filtered_mass = []
-    for x in file:
-        data_fields = x.strip().split('\t')
-        # Check if meteorite mass field isn't empty and it if it has mass > 2,900,000g
-        if data_fields[4] != '' and mass_lower_limit <= float(data_fields[4]) <= mass_upper_limit:
-            meteorite = MeteorDataEntry(*data_fields)
-            filtered_mass.append(meteorite)
-    display_table.print_filtered_mass_list(filtered_mass)
+    file, filtered_mass = open(file, read_mode).readline(), []
+    for line in file:
+        row = line.strip().split('\t')
+        meteorite = MeteorDataEntry(*row)
+        if row[4] != '' and mass_lower_limit <= float(row[4]) <= mass_upper_limit: filtered_mass.append(meteorite)
+    for meteorite in filtered_mass:
+        print(str(meteorite))
 
 
 def filter_year(file, read_mode, year_lower_limit, year_upper_limit):
-    file = open(file, read_mode).readline()
-    filtered_years = []
+    file, filtered_years = open(file, read_mode).readline(), []
     for x in file:
-        data_fields = x.strip().split('\t')
-        # Check if meteorite fell year is empty and if it fell on or after 2013
-        year_value = data_fields[6]
-        if year_value != '' and year_lower_limit <= int(year_value) <= year_upper_limit:
-            meteorite = MeteorDataEntry(*data_fields)
-            filtered_years.append(meteorite)
-    display_table.print_filtered_year_list(filtered_years)
+        row = x.strip().split('\t')
+        meteorite = MeteorDataEntry(*row)
+        if row[6] != '' and year_lower_limit <= int(row[6]) <= year_upper_limit: filtered_years.append(meteorite)
 
 
 print()
