@@ -20,8 +20,6 @@ def main():
     welcome_message.print_welcome_message()
     file_name, open_mode = filter_selection.get_filename_and_open_mode()
     filter_choice = filter_selection.select_filter()
-    filtered_mass_list = []
-    filtered_mass_list = []
 
     if filter_choice == '1':
         mass_lower_bound, mass_upper_bound = filter_selection.select_mass()
