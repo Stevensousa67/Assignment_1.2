@@ -22,3 +22,7 @@ class Meteorite:
         self.geolocation = data[9] if data and len(data) > 9 else ""
         self.states = data[10] if data and len(data) > 10 else ""
         self.counties = data[11] if data and len(data) > 11 else ""
+
+    def to_string(self):
+        return (f"{self.name}\t{self.id}\t{self.nametype}\t{self.recclass}\t{self.mass}\t{self.fall}\t{self.year}\t"
+                f"{self.reclat}\t{self.reclong}\t{self.geolocation}\t{self.states}\t{self.counties}")

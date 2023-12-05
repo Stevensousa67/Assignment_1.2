@@ -1,6 +1,6 @@
 """
 This module will filter the data passed in by the user from file_opener.py into two different lists depending on which
-options the user selected during program runtime and then calls display_table.py to display the filtered data.
+options the user selected during program runtime and then calls terminal_table.py to display the filtered data.
 
 Author:Steven Sousa
 version 1.2

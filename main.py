@@ -10,9 +10,11 @@ version: 1.2
 release date - December 2023
 """
 import data_filter
-import display_table
+import export_Excel_file
+import export_txt_file
 import filter_selection
 import show_results_selection
+import terminal_table
 import welcome_message
 
 
@@ -24,16 +26,19 @@ def main():
     if filter_choice == '1':
         mass_lower_bound, mass_upper_bound = filter_selection.select_mass()
         filtered_mass_list = data_filter.filter_mass(file_name, open_mode, mass_lower_bound, mass_upper_bound)
-        display_table.print_filtered_list(filtered_mass_list) if show_results_selection.select_results_display() == '1' else ""
+        if show_results_selection.select_results_display() == '1': terminal_table.print_filtered_list(filtered_mass_list)
+        if show_results_selection.select_results_display() == '2': export_txt_file.export_filtered_results(filtered_mass_list)
+        if show_results_selection.select_results_display() == '3': export_Excel_file.export_filtered_results(filtered_mass_list)
 
     elif filter_choice == '2':
         year_lower_bound, year_upper_bound = filter_selection.select_year()
         filtered_year_list = data_filter.filter_year(file_name, open_mode, year_lower_bound, year_upper_bound)
+        if show_results_selection.select_results_display() == '1': terminal_table.print_filtered_list(filtered_year_list)
+        elif show_results_selection.select_results_display() == '2': export_txt_file.export_filtered_results(filtered_year_list)
+        elif show_results_selection.select_results_display() == '3': export_Excel_file.export_filtered_results(filtered_year_list)
 
-    display_results_choice = show_results_selection.select_results_display()
+    #display_results_choice = show_results_selection.select_results_display()
 
-    if display_results_choice == '1':
-        display_table.print_filtered_list(())
 
 if __name__ == '__main__':
     main()
