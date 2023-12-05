@@ -21,23 +21,15 @@ states_label = 'STATES'
 counties_label = 'COUNTIES'
 
 
-def print_filtered_mass_list(filtered_list):
+def print_filtered_list(filtered_list):
     """This function will print the filtered data in the terminal"""
-    print('\nTable of meteors filtered on mass(g):\n')
+    print('\nTable of filtered meteors:\n')
     print(
         f'{blank_label: <8}{name_label: <24}{id_label: <24}{nametype_label: <24}{recclass_label: <24}{mass_label: <24}'
-        f'{fall_label: <24}{year_label: <24}{reclat_label: <24}{reclong_label: <24}{geolocation_label: <24}'
+        f'{fall_label: <24}{year_label: <24}{reclat_label: <24}{reclong_label: <24}{geolocation_label: <30}'
         f'{states_label: <24}{counties_label: <24}')
-    print("=" * 60)
+    print("=" * 288)
     for x, meteorite in enumerate(filtered_list, 1):
         print(f'{x: < 8}{meteorite.name: <24}{meteorite.id: <24}{meteorite.nametype: <24}{meteorite.recclass: <24}'
-              f'{meteorite.mass: <24}{meteorite.fall: <24}{meteorite.year: >24}{meteorite.reclat: <24}'
-              f'{meteorite.reclong: <24}{meteorite.geolocation: <24}{meteorite.states: <24}{meteorite.counties: <24}')
-
-# def print_filtered_year_list(filtered_year):
-#     print()
-#     print('\nTable of meteors filtered on year:\n')
-#     print(f'{blank_label: <8}{name_label: <24}{year_label: <24}')
-#     print("=" * 60)
-#     for x, meteorite in enumerate(filtered_year, 1):
-#         print(f'{x: < 8}{meteorite.name: <24}{meteorite.year: <24}')
+              f'{meteorite.mass: <24}{meteorite.fall: <24}{meteorite.year: <24}{meteorite.reclat: <24}'
+              f'{meteorite.reclong: <24}{meteorite.geolocation: <33}{meteorite.states: <23}{meteorite.counties: <24}')

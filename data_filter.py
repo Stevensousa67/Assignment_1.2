@@ -6,25 +6,25 @@ Author:Steven Sousa
 version 1.2
 release date - December 2023
 """
-
-from meteor_data_class import MeteorDataEntry
+import display_table
+from meteorite_class import Meteorite
 
 
 def filter_mass(file, read_mode, mass_lower_limit, mass_upper_limit):
-    file, filtered_mass = open(file, read_mode).readline(), []
-    for line in file:
+    text_file, filtered_mass = open(file, read_mode), []
+    next(text_file)
+    for line in text_file:
         row = line.strip().split('\t')
-        meteorite = MeteorDataEntry(*row)
+        meteorite = Meteorite(row)
         if row[4] != '' and mass_lower_limit <= float(row[4]) <= mass_upper_limit: filtered_mass.append(meteorite)
-    for meteorite in filtered_mass:
-        print(str(meteorite))
+    display_table.print_filtered_list(filtered_mass)
 
 
 def filter_year(file, read_mode, year_lower_limit, year_upper_limit):
     file, filtered_years = open(file, read_mode).readline(), []
     for x in file:
         row = x.strip().split('\t')
-        meteorite = MeteorDataEntry(*row)
+        meteorite = Meteorite(row)
         if row[6] != '' and year_lower_limit <= int(row[6]) <= year_upper_limit: filtered_years.append(meteorite)
 
 

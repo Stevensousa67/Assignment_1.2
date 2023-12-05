@@ -10,6 +10,5 @@ version: 1.2
 release date - December 2023
 """
 
-import welcome_message
+#welcome_message
 
-welcome_message
