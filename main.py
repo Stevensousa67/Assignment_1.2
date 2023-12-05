@@ -10,7 +10,6 @@ version: 1.2
 release date - December 2023
 """
 import data_filter
-import export_Excel_file
 import export_txt_file
 import filter_selection
 import show_results_selection
