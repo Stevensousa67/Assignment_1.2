@@ -5,7 +5,6 @@ Author: Steven Sousa
 version: 1.2
 release date - December 2023
 """
-import data_filter
 
 
 def get_filename_and_open_mode():
@@ -107,14 +106,3 @@ def swap_values_between_bounds(lower_limit, upper_limit):
     if lower_limit > upper_limit:
         lower_limit, upper_limit = upper_limit, lower_limit
     return lower_limit, upper_limit
-
-
-file_name, open_mode = get_filename_and_open_mode()
-filter_choice = select_filter()
-
-if filter_choice == '1':
-    mass_lower_bound, mass_upper_bound = select_mass()
-    data_filter.filter_mass(file_name, open_mode, mass_lower_bound, mass_upper_bound)
-elif filter_choice == '2':
-    year_lower_bound, year_upper_bound = select_year()
-    data_filter.filter_year(file_name, open_mode, year_lower_bound, year_upper_bound)

@@ -6,7 +6,6 @@ Author:Steven Sousa
 version 1.2
 release date - December 2023
 """
-import display_table
 from meteorite_class import Meteorite
 
 
@@ -17,7 +16,7 @@ def filter_mass(file, read_mode, mass_lower_limit, mass_upper_limit):
         row = line.strip().split('\t')
         meteorite = Meteorite(row)
         if row[4] != '' and mass_lower_limit <= float(row[4]) <= mass_upper_limit: filtered_mass.append(meteorite)
-    display_table.print_filtered_list(filtered_mass)
+    return filtered_mass
 
 
 def filter_year(file, read_mode, year_lower_limit, year_upper_limit):
@@ -27,4 +26,4 @@ def filter_year(file, read_mode, year_lower_limit, year_upper_limit):
         row = line.strip().split('\t')
         meteorite = Meteorite(row)
         if row[6] != '' and year_lower_limit <= int(row[6]) <= year_upper_limit: filtered_year.append(meteorite)
-    display_table.print_filtered_list(filtered_year)
+    return filtered_year

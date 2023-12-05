@@ -32,3 +32,4 @@ def print_filtered_list(filtered_list):
         print(f'{x: < 8}{meteorite.name: <24}{meteorite.id: <24}{meteorite.nametype: <24}{meteorite.recclass: <24}'
               f'{meteorite.mass: <24}{meteorite.fall: <24}{meteorite.year: <24}{meteorite.reclat: <24}'
               f'{meteorite.reclong: <24}{meteorite.geolocation: <33}{meteorite.states: <23}{meteorite.counties: <24}')
+    exit('\nProgram has successfully accomplished its intention and is now exiting. Goodbye!')

@@ -9,6 +9,33 @@ Author: Steven Sousa
 version: 1.2
 release date - December 2023
 """
+import data_filter
+import display_table
+import filter_selection
+import show_results_selection
+import welcome_message
 
-#welcome_message
 
+def main():
+    welcome_message.print_welcome_message()
+    file_name, open_mode = filter_selection.get_filename_and_open_mode()
+    filter_choice = filter_selection.select_filter()
+    filtered_mass_list = []
+    filtered_mass_list = []
+
+    if filter_choice == '1':
+        mass_lower_bound, mass_upper_bound = filter_selection.select_mass()
+        filtered_mass_list = data_filter.filter_mass(file_name, open_mode, mass_lower_bound, mass_upper_bound)
+        display_table.print_filtered_list(filtered_mass_list) if show_results_selection.select_results_display() == '1' else ""
+
+    elif filter_choice == '2':
+        year_lower_bound, year_upper_bound = filter_selection.select_year()
+        filtered_year_list = data_filter.filter_year(file_name, open_mode, year_lower_bound, year_upper_bound)
+
+    display_results_choice = show_results_selection.select_results_display()
+
+    if display_results_choice == '1':
+        display_table.print_filtered_list(())
+
+if __name__ == '__main__':
+    main()

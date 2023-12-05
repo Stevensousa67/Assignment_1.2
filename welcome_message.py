@@ -15,13 +15,3 @@ def print_welcome_message():
           'choosing either the mass of the meteorite or the year it fell on Earth.\nAfter filtering, the program will'
           ' ask if you would like the data to be displayed in the Terminal, exported to a .txt file, '
           'or to an .xlsm file.')
-
-
-def run_filter_selection():
-    """This function will initiate the filter_selection.py module"""
-    import filter_selection
-    filter_selection
-
-
-print_welcome_message()
-run_filter_selection()
