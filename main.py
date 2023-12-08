@@ -18,7 +18,7 @@ import terminal_table
 import welcome_message
 
 
-def filter_and_display(file_name, open_mode, filter_function, *args):
+def call_correct_display_method(file_name, open_mode, filter_function, *args):
     """This function asks the user which way to display the filtered data"""
     filter_result = filter_function(file_name, open_mode, *args)
     display_results_choice = show_results_selection.select_results_display()
@@ -38,11 +38,11 @@ def main():
 
     if filter_choice == '1':
         mass_lower_bound, mass_upper_bound = filter_selection.select_mass()
-        filter_and_display(file_name, open_mode, data_filter.filter_mass, mass_lower_bound, mass_upper_bound)
+        call_correct_display_method(file_name, open_mode, data_filter.filter_mass, mass_lower_bound, mass_upper_bound)
 
     elif filter_choice == '2':
         year_lower_bound, year_upper_bound = filter_selection.select_year()
-        filter_and_display(file_name, open_mode, data_filter.filter_year, year_lower_bound, year_upper_bound)
+        call_correct_display_method(file_name, open_mode, data_filter.filter_year, year_lower_bound, year_upper_bound)
 
 
 if __name__ == '__main__':
