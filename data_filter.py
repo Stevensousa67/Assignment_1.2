@@ -16,7 +16,7 @@ def filter_mass(file, read_mode, mass_lower_limit, mass_upper_limit):
     filtered_mass = []
     for line in text_file:
         row = line.strip().split('\t')
-        meteorite = Meteorite(row)
+        meteorite = Meteorite(*row)
         if row[4] != '' and mass_lower_limit <= float(row[4]) <= mass_upper_limit:
             filtered_mass.append(meteorite)
     return filtered_mass
@@ -28,6 +28,6 @@ def filter_year(file, read_mode, year_lower_limit, year_upper_limit):
     next(text_file)
     for line in text_file:
         row = line.strip().split('\t')
-        meteorite = Meteorite(row)
+        meteorite = Meteorite(*row)
         if row[6] != '' and year_lower_limit <= int(row[6]) <= year_upper_limit: filtered_year.append(meteorite)
     return filtered_year
