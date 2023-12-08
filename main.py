@@ -19,6 +19,7 @@ import welcome_message
 
 
 def filter_and_display(file_name, open_mode, filter_function, *args):
+    """This function asks the user which way to display the filtered data"""
     filter_result = filter_function(file_name, open_mode, *args)
     display_results_choice = show_results_selection.select_results_display()
     if display_results_choice == '1':
@@ -30,6 +31,7 @@ def filter_and_display(file_name, open_mode, filter_function, *args):
 
 
 def main():
+    """This function is the main program. Execute it to start the filtering program."""
     welcome_message.print_welcome_message()
     file_name, open_mode = filter_selection.get_filename_and_open_mode()
     filter_choice = filter_selection.select_filter()
