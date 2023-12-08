@@ -63,23 +63,23 @@ def select_mass():
 
 def select_year():
     """This function requests a lower and upper bound limits from user if they chose to filter the data on year."""
-    year_lower_limit = get_valid_int_input('\nIn YYYY format, enter the UPPER limit (inclusive) for the year the '
+    year_lower_limit = get_valid_int_input('\nIn YYYY format, enter the LOWER limit (inclusive) for the year the '
                                            'meteorite fell on Earth. \nThis allows the table to display meteors '
                                            'from that year onward only. (To EXIT in Windows, type \'>q\' or '
                                            '\'>Q\'. In macOS, type \':Q\' or \':q\'): \n')
 
-    year_upper_limit = get_valid_int_input(
-        '\nIn YYYY format, enter the UPPER limit (inclusive) for the year the meteorite fell '
-        'on Earth. \nThis allows the table to display meteors from that year onward only. '
-        '(To EXIT in Windows, type \'>q\' or \'>Q\'. In macOS, type \':Q\' or \':q\'): \n')
+    year_upper_limit = get_valid_int_input('\nIn YYYY format, enter the UPPER limit (inclusive) for the year the '
+                                           'meteorite fell on Earth. \nThis allows the table to display meteors '
+                                           'from that year onward only. (To EXIT in Windows, type \'>q\' or '
+                                           '\'>Q\'. In macOS, type \':Q\' or \':q\'): \n')
 
     if year_lower_limit > year_upper_limit:
         year_lower_limit, year_upper_limit = swap_values_between_bounds(year_lower_limit, year_upper_limit)
         print('\nBecause you entered a lower bound that is higher than the upper bound, the program has readjusted the'
               'bounds so that the lower bound can be the smallest value you inputted.')
 
-    if year_lower_limit <= 0:
-        year_lower_limit = 1
+    if year_lower_limit < 0:
+        year_lower_limit = 0
 
     print('\nSelected year range: ', year_lower_limit, ' - ', year_upper_limit)
     return year_lower_limit, year_upper_limit
