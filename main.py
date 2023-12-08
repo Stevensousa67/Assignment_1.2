@@ -26,23 +26,23 @@ def main():
     if filter_choice == '1':
         mass_lower_bound, mass_upper_bound = filter_selection.select_mass()
         filtered_mass_list = data_filter.filter_mass(file_name, open_mode, mass_lower_bound, mass_upper_bound)
-        choice = show_results_selection.select_results_display()
-        if choice == '1':
+        display_results_choice = show_results_selection.select_results_display()
+        if display_results_choice == '1':
             terminal_table.print_filtered_list(filtered_mass_list)
-        elif choice == '2':
+        elif display_results_choice == '2':
             export_txt_file.export_filtered_results(filtered_mass_list)
-        elif choice == '3':
+        elif display_results_choice == '3':
             export_excel_file.export_filtered_results(filtered_mass_list)
 
     elif filter_choice == '2':
         year_lower_bound, year_upper_bound = filter_selection.select_year()
         filtered_year_list = data_filter.filter_year(file_name, open_mode, year_lower_bound, year_upper_bound)
-        choice = show_results_selection.select_results_display()
-        if choice == '1':
+        display_results_choice = show_results_selection.select_results_display()
+        if display_results_choice == '1':
             terminal_table.print_filtered_list(filtered_year_list)
-        elif choice == '2':
+        elif display_results_choice == '2':
             export_txt_file.export_filtered_results(filtered_year_list)
-        elif choice == '3':
+        elif display_results_choice == '3':
             export_excel_file.export_filtered_results(filtered_year_list)
 
 

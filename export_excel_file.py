@@ -12,12 +12,16 @@ import xlwt
 
 def export_filtered_results(filtered_list):
     """This function exports the filtered data to an Excel file"""
-    workbook_name = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     workbook = xlwt.Workbook()
-    filtered_data_sheet = workbook.add_sheet("Filtered Meteorite Data")
-    index = 0
-    for name in ['Name', 'ID', 'Nametype', 'Recclass', 'Mass (g)', 'Fall', 'Year', 'Reclat', 'Reclong', 'Geolocation', 'States', 'Counties']:
-        filtered_data_sheet.write(0, index, name)
+    sheet = workbook.add_sheet("Filtered Meteorite Data")
+    for column_index, header_name in enumerate(['Name', 'ID', 'Nametype', 'Recclass', 'Mass (g)', 'Fall', 'Year', 'Reclat', 'Reclong', 'Geolocation', 'States', 'Counties']):
+        sheet.write(0, column_index, header_name)
 
-    for index in range(len(filtered_list)):
-        current_meteorite_object = filtered_list[index]
+    for index, meteorite in enumerate(filtered_list):
+        attribute_list = meteorite.to_string().split('\t')
+        for attr_index, value in enumerate(attribute_list):
+            sheet.write(index + 1, attr_index, value)
+
+    workbook.save(datetime.datetime.now().strftime("%Y%m%d-%H%M%S") + '.xls')
+    exit('\n Program has successfully accomplished its intention and saved your filtered results in a text file located'
+         ' in the directory where this program resides. Program is now exiting. Goodbye!')
