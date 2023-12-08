@@ -18,6 +18,17 @@ import terminal_table
 import welcome_message
 
 
+def filter_and_display(file_name, open_mode, filter_function, *args):
+    filter_result = filter_function(file_name, open_mode, *args)
+    display_results_choice = show_results_selection.select_results_display()
+    if display_results_choice == '1':
+        terminal_table.print_filtered_list(filter_result)
+    elif display_results_choice == '2':
+        export_txt_file.export_filtered_results(filter_result)
+    elif display_results_choice == '3':
+        export_excel_file.export_filtered_results(filter_result)
+
+
 def main():
     welcome_message.print_welcome_message()
     file_name, open_mode = filter_selection.get_filename_and_open_mode()
@@ -25,25 +36,11 @@ def main():
 
     if filter_choice == '1':
         mass_lower_bound, mass_upper_bound = filter_selection.select_mass()
-        filtered_mass_list = data_filter.filter_mass(file_name, open_mode, mass_lower_bound, mass_upper_bound)
-        display_results_choice = show_results_selection.select_results_display()
-        if display_results_choice == '1':
-            terminal_table.print_filtered_list(filtered_mass_list)
-        elif display_results_choice == '2':
-            export_txt_file.export_filtered_results(filtered_mass_list)
-        elif display_results_choice == '3':
-            export_excel_file.export_filtered_results(filtered_mass_list)
+        filter_and_display(file_name, open_mode, data_filter.filter_mass, mass_lower_bound, mass_upper_bound)
 
     elif filter_choice == '2':
         year_lower_bound, year_upper_bound = filter_selection.select_year()
-        filtered_year_list = data_filter.filter_year(file_name, open_mode, year_lower_bound, year_upper_bound)
-        display_results_choice = show_results_selection.select_results_display()
-        if display_results_choice == '1':
-            terminal_table.print_filtered_list(filtered_year_list)
-        elif display_results_choice == '2':
-            export_txt_file.export_filtered_results(filtered_year_list)
-        elif display_results_choice == '3':
-            export_excel_file.export_filtered_results(filtered_year_list)
+        filter_and_display(file_name, open_mode, data_filter.filter_year, year_lower_bound, year_upper_bound)
 
 
 if __name__ == '__main__':
