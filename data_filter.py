@@ -12,7 +12,7 @@ from meteorite_class import Meteorite
 def filter_mass(file, read_mode, mass_lower_limit, mass_upper_limit):
     """This function filters the data source based on the upper and lower limits established by the user"""
     text_file = open(file, read_mode)
-    next(text_file)
+    text_file.readline()
     filtered_mass = []
     for line in text_file:
         row = line.strip().split('\t')
@@ -25,7 +25,7 @@ def filter_mass(file, read_mode, mass_lower_limit, mass_upper_limit):
 def filter_year(file, read_mode, year_lower_limit, year_upper_limit):
     """"This function filters the data source based on the upper and lower limits established by the user"""
     text_file, filtered_year = open(file, read_mode), []
-    next(text_file)
+    text_file.readline()
     for line in text_file:
         row = line.strip().split('\t')
         meteorite = Meteorite(*row)
