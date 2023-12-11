@@ -7,6 +7,8 @@ version: 1.2
 release date - December 2023
 """
 
+import os
+
 
 def get_file_name():
     """This function will prompt the user to provide a text file for the program to filter on."""
@@ -23,9 +25,9 @@ def get_file_name():
 
 
 def check_if_filename_is_valid(filename):
-    """This function will check if the filename provided by the user is valid (ending in .txt) or if the user decided
-    to quit the program by typing '>q' or ':q' during filename request."""
-    if filename.lower().endswith(".txt"):
+    """This function will check if the filename provided by the user is valid (ending in .txt and exists in directory)
+     or if the user decided to quit the program by typing '>q' or ':q' during filename request."""
+    if os.path.exists(filename) and filename.lower().endswith('.txt'):
         return True
     elif filename.lower() in ['>q', ':q']:
         exit('\nProgram is now exiting. Goodbye!')
