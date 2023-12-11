@@ -1,9 +1,18 @@
+"""
+This module provides 3 tests for functions contained within the Assignment 1.2 project.
+Author: Steven Sousa
+version: 1.2
+release date: December 2023
+"""
+
+
 import pytest
 
 import file_opener
 
 
-def test_check_if_file_name_is_valid():
+def test_check_if_filename_is_valid():
+    """This function tests the check_if_filename_is_valid function from file_opener.py"""
     assert file_opener.check_if_filename_is_valid('data.txt') == True
     assert file_opener.check_if_filename_is_valid('data') == False
     assert file_opener.check_if_filename_is_valid('.txt') == False
