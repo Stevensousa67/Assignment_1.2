@@ -10,10 +10,11 @@ release date: December 2023
 import pytest
 
 import file_opener
+import show_results_selection
 
 
 def test_check_if_filename_is_valid():
-    """This function tests the check_if_filename_is_valid function from file_opener.py"""
+    """This function tests the check_if_filename_is_valid method from file_opener.py"""
     valid_inputs = ['Data.txt', 'meteorite_landings_data.txt', 'test (file)!.txt']
     invalid_inputs = ['data, meteorite_landings_data', '.txt', '', '123', 'gesfd']
     exit_inputs = [':q', ':Q', '>q', '>Q']
@@ -37,7 +38,7 @@ def test_check_if_filename_is_valid():
 
 
 def test_check_if_open_mode_is_valid():
-    """This functions tests the check_if_open_mode_is_valid function from file_opener.py"""
+    """This functions tests the check_if_open_mode_is_valid method from file_opener.py"""
     valid_modes = {'r', 'w', 'x', 'a'}
     all_characters = [chr(i) for i in range(128)]  # ASCII characters
     invalid_modes = [char.lower() for char in all_characters if char.lower() not in valid_modes]
@@ -52,7 +53,7 @@ def test_check_if_open_mode_is_valid():
     for mode in invalid_modes:
         assert not file_opener.check_if_open_mode_is_valid(mode)
 
-    # The following block of tests ensures that typing any exit inout will exit the program
+    # The following block of tests ensures that typing any exit input will exit the program
     for exit_choice in exit_inputs:
         with pytest.raises(SystemExit): file_opener.check_if_open_mode_is_valid(exit_choice)
 
@@ -61,5 +62,20 @@ def test_check_if_open_mode_is_valid():
         with pytest.raises((TypeError, AttributeError)): file_opener.check_if_open_mode_is_valid(mode)
 
 
+def test_check_if_filter_choice_is_valid():
+    """This function tests the get_valid_int_input method from filter_selection.py"""
+    invalid_inputs = ['a1', 'a', '!', '', None, False, 1, (), True, 3.4]
+    valid_inputs = ['1', '2', '3']
+    exit_input = ['4']
 
+    # The following block of tests ensures that the expected inputs from valid_inputs are True during runtime
+    for option in valid_inputs:
+        assert show_results_selection.check_if_filter_choice_is_valid(option)
 
+    # The following block of tests ensures that inputs from invalid_inputs are False during runtime
+    for option in invalid_inputs:
+        assert not show_results_selection.check_if_filter_choice_is_valid(option)
+
+    # The following block of tests ensures that typing any exit input will exit the program
+    for exit_choice in exit_input:
+        with pytest.raises(SystemExit): show_results_selection.check_if_filter_choice_is_valid(exit_choice)

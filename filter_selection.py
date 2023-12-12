@@ -75,8 +75,6 @@ def select_year():
 
     if year_lower_limit > year_upper_limit:
         year_lower_limit, year_upper_limit = swap_values_between_bounds(year_lower_limit, year_upper_limit)
-        print('\nBecause you entered a lower bound that is higher than the upper bound, the program has readjusted the'
-              'bounds so that the lower bound can be the smallest value you inputted.')
 
     if year_lower_limit < 0:
         year_lower_limit = 0
@@ -105,4 +103,6 @@ def swap_values_between_bounds(lower_limit, upper_limit):
     int(lower_limit), int(upper_limit)
     if lower_limit > upper_limit:
         lower_limit, upper_limit = upper_limit, lower_limit
+    print('\nBecause you entered a lower bound that is higher than the upper bound, the program has readjusted the'
+          'bounds so that the lower bound can be the smallest value you inputted.')
     return lower_limit, upper_limit
