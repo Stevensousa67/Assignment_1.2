@@ -23,5 +23,5 @@ def export_filtered_results(filtered_list):
             sheet.write(index + 1, attr_index, value)
 
     workbook.save(datetime.datetime.now().strftime("%Y%m%d-%H%M%S") + '.xls')
-    exit('\n Program has successfully accomplished its intention and saved your filtered results in a text file located'
+    exit('\n Program has successfully accomplished its intention and saved your filtered results in a .xls file located'
          ' in the directory where this program resides. Program is now exiting. Goodbye!')
