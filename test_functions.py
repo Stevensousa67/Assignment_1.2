@@ -7,10 +7,7 @@ release date: December 2023
 """
 
 
-import pytest
-
-import file_opener
-import show_results_selection
+import pytest, file_opener, show_results_selection
 
 
 def test_check_if_filename_is_valid():
@@ -30,11 +27,13 @@ def test_check_if_filename_is_valid():
 
     # The following block of tests ensures that typing any exit inout will exit the program
     for exit_choice in exit_inputs:
-        with pytest.raises(SystemExit): file_opener.check_if_filename_is_valid(exit_choice)
+        with pytest.raises(SystemExit):
+            file_opener.check_if_filename_is_valid(exit_choice)
 
     # The following block of tests ensures that if the inputs from error_inputs are entered, errors are raised
     for mode in error_inputs:
-        with pytest.raises((TypeError, AttributeError)): file_opener.check_if_filename_is_valid(mode)
+        with pytest.raises((TypeError, AttributeError)):
+            file_opener.check_if_filename_is_valid(mode)
 
 
 def test_check_if_open_mode_is_valid():
@@ -55,11 +54,13 @@ def test_check_if_open_mode_is_valid():
 
     # The following block of tests ensures that typing any exit input will exit the program
     for exit_choice in exit_inputs:
-        with pytest.raises(SystemExit): file_opener.check_if_open_mode_is_valid(exit_choice)
+        with pytest.raises(SystemExit):
+            file_opener.check_if_open_mode_is_valid(exit_choice)
 
     # The following block of tests ensures that if the inputs from error_inputs are entered, errors are raised
     for mode in error_inputs:
-        with pytest.raises((TypeError, AttributeError)): file_opener.check_if_open_mode_is_valid(mode)
+        with pytest.raises((TypeError, AttributeError)):
+            file_opener.check_if_open_mode_is_valid(mode)
 
 
 def test_check_if_filter_choice_is_valid():
@@ -78,4 +79,5 @@ def test_check_if_filter_choice_is_valid():
 
     # The following block of tests ensures that typing any exit input will exit the program
     for exit_choice in exit_input:
-        with pytest.raises(SystemExit): show_results_selection.check_if_filter_choice_is_valid(exit_choice)
+        with pytest.raises(SystemExit):
+            show_results_selection.check_if_filter_choice_is_valid(exit_choice)

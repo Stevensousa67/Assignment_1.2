@@ -14,7 +14,7 @@ def get_file_name():
     """This function will prompt the user to provide a text file for the program to filter on."""
     while True:
         filename = input('\nEnter a file name with its extension (ex: "file_name.txt") or\n'
-                         'To EXIT in Windows, type ">q" or ">Q". In macOS, type ":Q" or ":q": ')
+                         'To EXIT, type ">q" or ">Q": ')
 
         if check_if_filename_is_valid(filename):
             print("\nTarget file: ", filename)
@@ -29,7 +29,7 @@ def check_if_filename_is_valid(filename):
      or if the user decided to quit the program by typing '>q' or ':q' during filename request."""
     if os.path.exists(filename) and filename.lower().endswith('.txt'):
         return True
-    elif filename.lower() in ['>q', ':q']:
+    elif filename.lower() == '>q':
         exit('\nProgram is now exiting. Goodbye!')
     else:
         return False
@@ -44,7 +44,7 @@ def get_file_open_mode():
                      'contents of an existing file! \n'
                      '"x" - open for exclusive creation, failing if the file already exists\n'
                      '"a" - open for writing, appending to the end of file if it exists\n'
-                     'To EXIT in Windows, type ">q" or ">Q". In macOS, type ":Q" or ":q": ')
+                     'To EXIT, type ">q" or ">Q": ')
 
         if check_if_open_mode_is_valid(mode):
             print('\nSelected open mode: ', mode)
@@ -58,7 +58,7 @@ def check_if_open_mode_is_valid(mode):
     '>q' or ':q' during open mode request."""
     if mode.lower() in ['r', 'w', 'x', 'a']:
         return True
-    elif mode.lower() in ['>q', ':q']:
+    elif mode.lower() == '>q':
         exit('\nProgram is now exiting. Goodbye!')
     else:
         return False

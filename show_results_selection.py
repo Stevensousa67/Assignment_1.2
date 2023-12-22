@@ -12,10 +12,10 @@ def select_results_display():
     between terminal display, .txt file, .csv file, or to quit the program."""
     while True:
         choice = input('\nPlease select one of the options below to display the filtered results:\n'
-                       '1 - Terminal\n'
-                       '2 - Save to text file (.txt)\n'
-                       '3 - Save to Excel file (.csv)\n'
-                       '4 - EXIT the program\n')
+                       '1. Terminal\n'
+                       '2. Save to text file (.txt)\n'
+                       '3. Save to Excel file (.csv)\n'
+                       '4. EXIT the program\n')
 
         if check_if_filter_choice_is_valid(choice):
             return choice

@@ -21,9 +21,9 @@ def select_filter():
     or to quit the program."""
     while True:
         choice = input('\nPlease select one of the options below:\n'
-                       '\'1\' - Filter by MASS(g)\n'
-                       '\'2\' - Filter by YEAR\n'
-                       '\'3\' - EXIT the program\n')
+                       '1. Filter by MASS(g)\n'
+                       '2. Filter by YEAR\n'
+                       '3. EXIT the program\n')
 
         if check_if_filter_choice_is_valid(choice):
             return choice
@@ -42,12 +42,14 @@ def check_if_filter_choice_is_valid(choice):
 
 
 def select_mass():
-    """This function requests a lower and upper bound limits from the user if they chose to filter the data by mass."""
+    """This function requests a lower and upper bound limits from the user if they chose to filter the data by mass. If
+    a user enters a lower limit that is greater than the upper limit, they will be swapped. Also, if the user enters
+    a negative lower bound, it will be set to 0."""
     mass_lower_limit = get_valid_int_input("\nEnter the LOWER limit (inclusive) for the meteor's mass (g)."
-                                           " (To EXIT in Windows, type '>q' or '>Q'. In macOS, type ':Q' or ':q'): \n")
+                                           " (To EXIT, type 'Q'): \n")
 
     mass_upper_limit = get_valid_int_input("\nEnter the UPPER limit (inclusive) for the meteor's mass (g). "
-                                           "(To EXIT in Windows, type '>q' or '>Q'. In macOS, type ':Q' or ':q'): \n")
+                                           "(To EXIT, type 'Q'): \n")
 
     if mass_lower_limit > mass_upper_limit:
         mass_lower_limit, mass_upper_limit = swap_values_between_bounds(mass_lower_limit, mass_upper_limit)
@@ -62,16 +64,16 @@ def select_mass():
 
 
 def select_year():
-    """This function requests a lower and upper bound limits from user if they chose to filter the data on year."""
-    year_lower_limit = get_valid_int_input('\nIn YYYY format, enter the LOWER limit (inclusive) for the year the '
-                                           'meteorite fell on Earth. \nThis allows the table to display meteors '
-                                           'from that year onward only. (To EXIT in Windows, type \'>q\' or '
-                                           '\'>Q\'. In macOS, type \':Q\' or \':q\'): \n')
+    """This function requests a lower and upper bound limits from user if they chose to filter the data on year. If
+    a user enters a lower limit that is greater than the upper limit, they will be swapped. Also, if the user enters
+    a negative lower bound, it will be set to 0."""
+    year_lower_limit = get_valid_int_input("\nIn YYYY format, enter the LOWER limit (inclusive) for the year the "
+                                           "meteorite fell on Earth. \nThis allows the table to display meteors from "
+                                           "that year onward only. (To EXIT, type 'Q'): \n")
 
-    year_upper_limit = get_valid_int_input('\nIn YYYY format, enter the UPPER limit (inclusive) for the year the '
-                                           'meteorite fell on Earth. \nThis allows the table to display meteors '
-                                           'from that year onward only. (To EXIT in Windows, type \'>q\' or '
-                                           '\'>Q\'. In macOS, type \':Q\' or \':q\'): \n')
+    year_upper_limit = get_valid_int_input("\nIn YYYY format, enter the UPPER limit (inclusive) for the year the "
+                                           "meteorite fell on Earth. \nThis allows the table to display meteors from "
+                                           "that year onward only. (To EXIT, type 'Q'): \n")
 
     if year_lower_limit > year_upper_limit:
         year_lower_limit, year_upper_limit = swap_values_between_bounds(year_lower_limit, year_upper_limit)
@@ -88,13 +90,13 @@ def get_valid_int_input(prompt):
     user typed '>q' or ':q' during either the lower limit or upper limit requests of both functions."""
     while True:
         user_input = input(prompt)
-        if user_input.lower() in [">q", ":q"]:
+        if user_input == 'Q':
             exit('\nProgram is now exiting. Goodbye!')
         try:
             value = int(user_input)
             return value
         except ValueError:
-            print("\nPlease type a valid integer.")
+            print("\nInvalid range limit: ", user_input)
 
 
 def swap_values_between_bounds(lower_limit, upper_limit):
