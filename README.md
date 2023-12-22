@@ -4,7 +4,8 @@
 @release date: December 2023
 
 This repository contains the code for Assignment 1.2 from COMP390-002. The only external library needed to run this 
-project is xlwt and pytest. To run the project, simply open main.py, hit run (inside main.py), and follow the prompts in the terminal.
+project is xlwt and pytest. To run the project, simply open main.py, hit run (inside main.py), and follow the prompts in
+the terminal.
 
 The purpose of this application is to filter a large data set from NASA. The dataset is called meteorite_landings_data.txt
 that contains collection of 45,716 data entries. Each entry has information about a single meteorite landing on Earth. 
