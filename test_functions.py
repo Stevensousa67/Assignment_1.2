@@ -14,7 +14,7 @@ def test_check_if_filename_is_valid():
     """This function tests the check_if_filename_is_valid method from file_opener.py"""
     valid_inputs = ['Data.txt', 'meteorite_landings_data.txt', 'test (file)!.txt']
     invalid_inputs = ['data, meteorite_landings_data', '.txt', '', '123', 'gesfd']
-    exit_inputs = [':q', ':Q', '>q', '>Q']
+    exit_inputs = ['>q', '>Q']
     error_inputs = [(), None, 123, False, True, 3.4]
 
     # The following block of tests ensures that the expected inputs from valid_inputs are True during runtime
@@ -41,7 +41,7 @@ def test_check_if_open_mode_is_valid():
     valid_modes = {'r', 'w', 'x', 'a'}
     all_characters = [chr(i) for i in range(128)]  # ASCII characters
     invalid_modes = [char.lower() for char in all_characters if char.lower() not in valid_modes]
-    exit_inputs = [':q', ':Q', '>q', '>Q']
+    exit_inputs = ['>q', '>Q']
     error_inputs = [(), None, 123, False, True, 3.4]
 
     # The following block of tests ensures that the expected inputs from valid_modes are True during runtime
